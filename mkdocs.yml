@@ -1,0 +1,26 @@
+site_name: My Docs
+
+theme:
+  name: material
+  custom_dir: overrides
+
+nav:
+  - Index: index.md
+  - Public Datasets: public_datasets.md
+  - Protected Datasets: protected_datasets.md
+  - Testing: testing.md
+
+markdown_extensions:
+  - attr_list
+  - meta
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+plugins:
+  - search
+  - macros
