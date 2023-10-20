@@ -4,6 +4,4 @@ ignore/
 
 venv/
 
-things_to_note_for_documentation.txt
-
-entr_command.txt
+documentation/
