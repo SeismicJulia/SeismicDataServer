@@ -14,10 +14,11 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
     mkdocs.yml    # The configuration file.
     docs/
         index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files
+        protected_datasets.md
+        public_datasets.md
         static/
-            test_file.txt
+            protected_datasets/  
+                ... 
+            public_datasets/
 
-## Test Downloads
-<!--* [test_file.txt](static/test_file.txt){:download} -->
 
