@@ -1,2 +1,1 @@
-dafjdalkalkda.dmak.
-addsd   
+Test file 4 (protected).

@@ -1,22 +1,10 @@
-# Welcome to MkDocs
+# SAIG: Tools and Data
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+## Resources
 
-## Commands
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        protected_datasets.md
-        public_datasets.md
-        static/
-            protected_datasets/  
-                ... 
-            public_datasets/
+## Links
+* [SAIG](http://saig.physics.ualberta.ca/){:target="_blank"}
+* [SeismicLab](http://seismic-lab.physics.ualberta.ca/){:target="_blank"}
+* [Seismic Julia on GitHub](https://github.com/SeismicJulia/Seismic.jl){:target="_blank}
