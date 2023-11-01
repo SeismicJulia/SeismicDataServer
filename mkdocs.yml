@@ -1,0 +1,46 @@
+site_name: "SAIG: Tools & Data"
+
+theme:
+  name: material
+  custom_dir: overrides
+  features:
+    - navigation.indexes
+
+extra_javascript:
+  - javascripts/katex.js 
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+extra_css:
+  - stylesheets/extra.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+
+nav:
+  - Home: index.md
+  - Datasets:
+    - datasets/index.md
+    - Public Datasets: datasets/public_datasets.md
+    - Private Datasets: datasets/private_datasets.md
+  - Codes: codes.md
+  - Pluto: static/pluto_notebooks/operators.html
+  - Jupyter: "static/jupyter/Julia Showcase.ipynb"
+  - Testing: testing.md
+
+markdown_extensions:
+  - attr_list
+  - meta
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.details
+
+plugins:
+  - search
+  - macros
+  - mkdocs-jupyter:
+      ignore_h1_titles: true

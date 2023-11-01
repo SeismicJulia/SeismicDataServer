@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+  {% if page and page.meta and page.meta.local_script %}
+    <script src="{{page.meta.local_script}}"></script>
+  {% endif %}
+  {{ super() }}
+  <!-- Add scripts that need to run afterwards here -->
+{% endblock %}
