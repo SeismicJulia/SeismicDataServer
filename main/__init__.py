@@ -1,5 +1,7 @@
-import os, hashlib
+import os
 import mkdocs_macros
+
+from util import *
 
 def define_env(env):
     "Hook function"
@@ -11,33 +13,28 @@ def define_env(env):
     # Directory of public datasets. Can be either absolute or relative to docs_dir
     public_dir = "static/public_datasets/"
     # Directory of protected datasets. Can be either absolute or relative to docs_dir
-    protected_dir = "static/protected_datasets/"
-
-    def compute_checksum(filepath, algorithm):
-        # filepath is the path of the file for which the checksum is to be computed
-        # algorithm is the algorithm we want to use to compute the checksum (see
-        # hashlib.new() documentation: https://docs.python.org/3/library/hashlib.html#hashlib.new)
-        checksum = hashlib.new(algorithm)
-        buffer_size = 2**16  # 64 KB
-
-        with open(filepath, "rb") as f:
-            data = f.read(buffer_size)
-            while data:
-                checksum.update(data)
-                data = f.read(buffer_size)
-        
-        return checksum.hexdigest()
+    protected_dir = "static/private_datasets/"
 
     def list_files(relpath):
         # Returns a markdown list of downloadable files in relpath, where
         # relpath is relative to docs_dir
-        dataset_files = sorted(os.listdir(docs_dir+relpath))
-        markdown = ""
+        dataset_files = sorted(filename for filename in os.listdir(docs_dir+relpath) if filename[0] != '.')
+        page_markdown = ""
         for file in dataset_files:
             filepath = f"{docs_dir}{relpath}{file}"
             sha256sum = compute_checksum(filepath, "sha256")
-            markdown += f"* [{file}]({relpath}/{file}){{:download={file}}} sha256-{sha256sum}\n"
-        return markdown
+            if verify_checksum(filepath, sha256sum):
+                file_size = human_readable_file_size(filepath)
+                # Note the starting '/' below
+                download_link = f"[{file}](/{relpath}{file}){{:download={file}}}"
+                file_markdown = [
+                    f"* {download_link}",
+                    f"      * Checksum: sha256-{sha256sum}",
+                    f"      * Size: {file_size}",
+                    '' # Empty string at the end to make sure there is a newline after the last item
+                ]
+                page_markdown += '\n'.join(file_markdown)
+        return page_markdown
     
 
     @env.macro

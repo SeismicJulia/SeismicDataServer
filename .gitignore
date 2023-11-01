@@ -1,7 +1,14 @@
 *__pycache__*
 
+**testing**
+
 ignore/
 
 venv/
 
 documentation/
+
+*.su
+
+# Hidden files, such as .checksum files
+**/.* 
