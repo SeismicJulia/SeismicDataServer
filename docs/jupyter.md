@@ -1,2 +1,0 @@
-# Embedded Jupyter Notebook Showcase
-

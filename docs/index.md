@@ -3,7 +3,7 @@
 ## Resources
 * [Data](datasets/index.md)
 <!-- * Figures -->
-* [Codes](codes.md)
+* [Codes](codes/index.md)
 
 
 ## Links

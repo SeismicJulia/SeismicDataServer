@@ -21,9 +21,10 @@ nav:
     - datasets/index.md
     - Public Datasets: datasets/public_datasets.md
     - Private Datasets: datasets/private_datasets.md
-  - Codes: codes.md
-  - Pluto: static/pluto_notebooks/dataset_tutorial.html" target="_blank
-  - Jupyter: "static/jupyter/Julia Showcase.ipynb"
+  - Codes:
+    - codes/index.md
+    - Pluto: static/pluto_notebooks/dataset_tutorial.html" target="_blank
+    - Jupyter: "static/jupyter/julia_showcase.ipynb"
   - Testing: testing.md
 
 markdown_extensions:
