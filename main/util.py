@@ -20,10 +20,6 @@ def compute_checksum(filepath: str, algorithm:str) -> str:
             checksum.update(data)
             data = f.read(buffer_size)
 
-    # read hashfile and check if the file is new
-    # 
-    # check if the hash changes
-
     return checksum.hexdigest()
 
 def verify_checksum(filepath: str, checksum):
@@ -59,9 +55,9 @@ def verify_checksum(filepath: str, checksum):
 def human_readable_file_size(filepath:str) -> str:
     '''
     This function gets the size of a file and returns it in a human readable format.
-    * Parameters:
+    - Parameters:
         * filepath: the path of the file
-    * Returns:
+    - Returns:
         * The size in a human readable format.
     '''
     units = ['B', 'KB', 'MB', 'GB', 'TB']
