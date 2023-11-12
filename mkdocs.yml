@@ -25,6 +25,7 @@ nav:
     - codes/index.md
     - Pluto: static/pluto_notebooks/dataset_tutorial.html" target="_blank
     - Jupyter: "static/jupyter/julia_showcase.ipynb"
+  - Admin: admin.md
   - Testing: testing.md
 
 markdown_extensions:

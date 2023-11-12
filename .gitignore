@@ -13,4 +13,4 @@ documentation/
 # Hidden files, such as .checksum files
 **/.* 
 
-site/
+site
