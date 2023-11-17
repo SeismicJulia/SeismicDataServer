@@ -36,6 +36,7 @@ def define_env(env):
                     f"* {download_link}",
                     f"      * Checksum: sha256-{sha256sum}",
                     f"      * Size: {file_size}",
+                    f"      * Description: ",
                     '' # Empty string at the end to make sure there is a newline after the last item
                 ]
                 page_markdown += '\n'.join(file_markdown)
