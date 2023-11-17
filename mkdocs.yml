@@ -21,6 +21,7 @@ nav:
     - datasets/index.md
     - Public Datasets: datasets/public_datasets.md
     - Private Datasets: datasets/private_datasets.md
+    - Testing Datasets: datasets/testing_datasets.md
   - Codes:
     - codes/index.md
     - Pluto: static/pluto_notebooks/dataset_tutorial.html" target="_blank
