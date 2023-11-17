@@ -14,6 +14,8 @@ def define_env(env):
     public_dir = "static/public_datasets/"
     # Directory of protected datasets. Can be either absolute or relative to docs_dir
     private_dir = "static/private_datasets/"
+    # Directory of testing datasets. Can be either absolute or relative to docs_dir
+    testing_dir = "static/testing_datasets/"
     
     # Files that don't pass checksum tests
     failed_checksums = []
@@ -43,6 +45,7 @@ def define_env(env):
 
     public_datasets_md = list_files(public_dir)
     private_datasets_md = list_files(private_dir)
+    testing_datasets_md = list_files(testing_dir)
     
     @env.macro
     def show_public_datasets():
@@ -51,6 +54,10 @@ def define_env(env):
     @env.macro
     def show_protected_datasets():
         return private_datasets_md
+    
+    @env.macro
+    def show_testing_datasets():
+        return testing_datasets_md
     
     @env.macro
     def show_warnings():
