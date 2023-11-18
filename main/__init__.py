@@ -30,12 +30,14 @@ def define_env(env):
             sha256sum = compute_checksum(filepath, "sha256")
             if verify_checksum(filepath, sha256sum):
                 file_size = human_readable_file_size(filepath)
+                description = get_file_description(filepath)
                 # Note the starting '/' below
                 download_link = f"[{file}](/{relpath}{file}){{:download={file}}}"
                 file_markdown = [
                     f"* {download_link}",
                     f"      * Checksum: sha256-{sha256sum}",
                     f"      * Size: {file_size}",
+                    f"      * Description: {description}",
                     '' # Empty string at the end to make sure there is a newline after the last item
                 ]
                 page_markdown += '\n'.join(file_markdown)

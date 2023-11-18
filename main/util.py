@@ -69,3 +69,18 @@ def human_readable_file_size(filepath:str) -> str:
         squashed_size //= 1000
         unit_index += 1
     return f"{squashed_size} {units[unit_index]}"
+
+def get_file_description(filepath:str) -> str:
+    dir_name, file_name = filepath.rsplit("/", 1)
+    description_filepath = f"{dir_name}/.{file_name}.description"
+
+    # If description file does not exist, return "N/A"
+    description = "N/A"
+
+    if os.path.exists(description_filepath):
+        # If we do find a description file, return its contents
+        with open(description_filepath, "r") as df:
+            # Replace newline characters with "<br/>" so there is no problem with markdown formatting
+            description = df.read().replace('\n', '<br/>')
+
+    return description
