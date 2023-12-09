@@ -8,7 +8,13 @@ def define_env(env):
 
     # We want a relative docs_dir and not an absolute path to it, for security
     # reasons
-    docs_dir = env.variables["config"]["docs_dir"] + '/'
+    #docs_dir = env.variables["config"]["docs_dir"] + '/'
+
+    # nfs_dir is the true directory of the dataset files, aliased_dir is the directory
+    # that shows up on the web page. Note that aliased_dir must be redirected to nfs_dir 
+    # in the web server config file
+    nfs_dir = "/nfs/Datasets"
+    aliased_dir = "/static/Datasets"
 
     # Directory of public datasets. Can be either absolute or relative to docs_dir
     public_dir = "static/public_datasets/"
@@ -20,19 +26,19 @@ def define_env(env):
     # Files that don't pass checksum tests
     failed_checksums = []
 
-    def list_files(relpath):
+    def list_files(dir_name):
         # Returns a markdown list of downloadable files in relpath, where
         # relpath is relative to docs_dir
-        dataset_files = sorted(filename for filename in os.listdir(docs_dir+relpath) if filename[0] != '.')
+        dataset_files = sorted(filename for filename in os.listdir(f"{nfs_dir}/{dir_name}") if filename[0] != '.')
         page_markdown = ""
         for file in dataset_files:
-            filepath = f"{docs_dir}{relpath}{file}"
+            filepath = f"{nfs_dir}/{dir_name}/{file}"
             sha256sum = compute_checksum(filepath, "sha256")
             if verify_checksum(filepath, sha256sum):
                 file_size = human_readable_file_size(filepath)
                 description = get_file_description(filepath)
                 # Note the starting '/' below
-                download_link = f"[{file}](/{relpath}{file}){{:download={file}}}"
+                download_link = f"[{file}]({aliased_dir}/{dir_name}/{file}){{:download={file}}}"
                 file_markdown = [
                     f"* {download_link}",
                     f"      * Checksum: sha256-{sha256sum}",
