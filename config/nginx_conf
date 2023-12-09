@@ -1,11 +1,11 @@
 server {
-  listen 8000;
-  listen [::]:8000;
+  listen 7002;
+  listen [::]:7002;
   
   root /var/www/mkdocs_site/site;
   index index.html;
 
-  location ~ (/private_datasets|/codes|/testing_datasets|/upload_instructions) {
+  location ~ (/private_datasets|/testing_datasets|/upload_instructions) {
     auth_basic "Private";
     auth_basic_user_file /etc/nginx/access_control/.private;
   }
@@ -15,4 +15,11 @@ server {
     auth_basic_user_file /etc/nginx/access_control/.admin;
   }
 
+  location /static/Datasets {
+    rewrite ^/static(.*)$ "/nfs$1" redirect;
+  }
+
+  location /nfs {
+    root /;
+  }
 }
