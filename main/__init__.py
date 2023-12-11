@@ -18,7 +18,7 @@ def define_env(env):
 
     # Directory of public datasets. Can be either absolute or relative to docs_dir
     public_dir = "Public"
-    # Directory of protected datasets. Can be either absolute or relative to docs_dir
+    # Directory of private datasets. Can be either absolute or relative to docs_dir
     private_dir = "Private"
     # Directory of testing datasets. Can be either absolute or relative to docs_dir
     testing_dir = "Testing"
@@ -37,7 +37,6 @@ def define_env(env):
             if verify_checksum(filepath, sha256sum):
                 file_size = human_readable_file_size(filepath)
                 description = get_file_description(filepath)
-                # Note the starting '/' below
                 download_link = f"[{file}]({aliased_dir}/{dir_name}/{file}){{:download={file}}}"
                 file_markdown = [
                     f"* {download_link}",

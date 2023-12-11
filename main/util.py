@@ -9,7 +9,7 @@ def compute_checksum(filepath: str, algorithm:str) -> str:
         * filepath - the path of the file
         * algorithm - the algorithm we want to use
     - Returns:
-        * The computed checksum (in hexadecimal) as a string.
+        * The computed checksum (in hexadecimal) as a string
     '''
     checksum = hashlib.new(algorithm)
     buffer_size = 2**16  # 64 KB
@@ -22,7 +22,17 @@ def compute_checksum(filepath: str, algorithm:str) -> str:
 
     return checksum.hexdigest()
 
-def verify_checksum(filepath: str, checksum):
+def verify_checksum(filepath: str, checksum:str) -> bool:
+    '''
+    This function takes in a recently computed checksum of a file, and compares it with the checksum
+    we have stored on disk, in a file called .{FILENAME}.checksum if it exists. If it doesn't exist,
+    the file is created using the checksum recently computed.
+    - Parameters: 
+      * filepath: the path of the file
+      * checksum: the computed checksum
+    - Returns:
+      * True if the checksums match, or if the checksum file does not exists, False otherwise
+    '''
     dir_name, file_name = filepath.rsplit("/", 1)
     checksum_filepath = f"{dir_name}/.{file_name}.checksum"
     current_time = datetime.now()
@@ -58,7 +68,7 @@ def human_readable_file_size(filepath:str) -> str:
     - Parameters:
         * filepath: the path of the file
     - Returns:
-        * The size in a human readable format.
+        * The size in a human readable format
     '''
     units = ['B', 'KB', 'MB', 'GB', 'TB']
     size_in_bytes = os.stat(filepath).st_size
@@ -71,6 +81,14 @@ def human_readable_file_size(filepath:str) -> str:
     return f"{squashed_size} {units[unit_index]}"
 
 def get_file_description(filepath:str) -> str:
+    '''
+    This function gets the description of a dataset file. This description is assumed to be stored
+    in a file called .{FILENAME}.description, present at the same path where the file is present.
+    - Parameters:
+        * filepath: the path of the file
+    - Returns:
+        * the description of the file if it exists, "N/A" otherwise
+    '''
     dir_name, file_name = filepath.rsplit("/", 1)
     description_filepath = f"{dir_name}/.{file_name}.description"
 
