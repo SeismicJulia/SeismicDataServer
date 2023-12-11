@@ -59,7 +59,7 @@ def define_env(env):
         return public_datasets_md
     
     @env.macro
-    def show_protected_datasets():
+    def show_private_datasets():
         return private_datasets_md
     
     @env.macro
