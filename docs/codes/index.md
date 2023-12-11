@@ -8,7 +8,7 @@ $$
 $$
 where, $\kappa = \rho v^2$  is the bulk modulus, $\rho $  is the density, $v$ is the velocity, $p$ is the pressure field,  $\omega$ is the angular frequency and $f(\omega)$ is the source signature. 
 
-After discretizating,  the acoustic wave equation can be written in a compact  matrix form as  
+After discretization,  the acoustic wave equation can be written in a compact  matrix form as  
 $$
 A({\bf x}, {\bf m}, \bf \omega){\bf p}({\bf x }, {\bf x}\_{s},\omega) ={\bf f(\omega)} \delta({\bf x} - {\bf x}\_{s}),
 $$
