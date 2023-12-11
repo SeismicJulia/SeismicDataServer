@@ -1,3 +1,3 @@
-# Protected Datasets
+# Private Datasets
 
-{{show_protected_datasets()}}
+{{show_private_datasets()}}

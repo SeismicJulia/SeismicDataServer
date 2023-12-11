@@ -27,13 +27,16 @@ Usage: ./sftp_upload_script/sftp_file_upload.sh [-u username [-p password]] [-D 
 
 ## Examples:
 ### Uploading a dataset
-To upload a testing dataset called tdf.su, you can run the following command:
+To upload a testing dataset called tdf.su, you can run the command below, and enter your username and password
+when prompted:
 ``` sh
 $ ./sftp_file_upload.sh tdf.su
-```
-You will then be asked for a username and password:
-```
 Username: YOUR_USERNAME
+Password: 
+```
+You can also provide your username as an argument:
+``` sh
+$ ./sftp_file_upload.sh -u YOUR_USERNAME tdf.su
 Password: 
 ```
 
@@ -47,11 +50,14 @@ $ ./sftp_file_upload.sh -D tdf_desc.txt tdf.su
 Again, you will be asked for your username and password.
 
 ### Uploading a dataset non-interactively
+???+ danger "Warning"
+    ```
+    Be careful when using the -p flag. Your password will be stored in the history of the shell, and can 
+    possibly be seen by other people if you use this script on a shared machine.
+    ```
 If you want, you can provide your username and password as command line arguments.
 ``` sh
 $ ./sftp_file_upload.sh -u YOUR_USERNAME -p YOUR_PASSWORD -D tdf_desc.txt tdf.su
 ```
-You can provide only your username as a command line argument, and the script
-will ask you to enter your password. Note, however, that if you provide your password
-as a command line argument without providing your username, then it will just be ignored
-and you will be asked to enter both your username and password.
+Note, that if you provide your password as a command line argument without providing your username, 
+then it will just be ignored and you will be asked to enter both your username and password.
